@@ -7,8 +7,10 @@ void cargarAEquipos(unordered_map<int, Equipo>& equipos, int eq1, int eq2, int g
 
 void levantarDatos(int cantPartidos, vector<Partido>& partidos, unordered_map<int, Equipo>& equipos);
 
-void inicializarMatriz(matriz& C, int n, int m);
-void generarBMatrizCMM(unordered_map<int, Equipo>& equipos, matriz& b);
-// void generarMatrizColley(vector<Partido>& partidos, vector<Equipo>& equipos, matriz& A, matriz& b);
+void inicializarMatrizConCeros(matriz& C, int n, int m);
+
+void generarMatrizbCMM(unordered_map<int, Equipo>& equipos, matriz& b);
+
+void generarMatrizACMM(vector<Partido>& partidos, unordered_map<int, Equipo>& equipos, matriz& A);
 
 #endif

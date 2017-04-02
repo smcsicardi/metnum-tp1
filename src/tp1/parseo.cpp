@@ -18,8 +18,6 @@ void levantarDatos(int cantPartidos, vector<Partido>& partidos, unordered_map<in
         cargarAEquipos(equipos, p.equipo1, p.equipo2, p.goles1, p.goles2, idxeq);
         cargarAEquipos(equipos, p.equipo2, p.equipo1, p.goles2, p.goles1, idxeq);
     }
-
-    return;
 }
 
 
@@ -29,10 +27,10 @@ void cargarAEquipos(unordered_map<int, Equipo>& equipos, int eq1, int eq2, int g
     auto it = equipos.find(eq1);
     if(it != equipos.end()){
         // El equipo está agregado, le cargo los datos
-        (*it).second.jugados++;
-        (*it).second.ganados = g1 > g2 ? (*it).second.ganados+1 : (*it).second.ganados;
-        (*it).second.perdidos = g1 < g2 ? (*it).second.perdidos+1 : (*it).second.perdidos;
-        (*it).second.empatados = g1 == g2 ? (*it).second.empatados+1 : (*it).second.empatados;
+        it->second.jugados++;
+        it->second.ganados = g1 > g2 ? it->second.ganados+1 : it->second.ganados;
+        it->second.perdidos = g1 < g2 ? it->second.perdidos+1 : it->second.perdidos;
+        it->second.empatados = g1 == g2 ? it->second.empatados+1 : it->second.empatados;
 
     } else {
         // El equipo no está, lo agrego.
@@ -47,33 +45,47 @@ void cargarAEquipos(unordered_map<int, Equipo>& equipos, int eq1, int eq2, int g
 
         equipos.insert({eq1, eq});
     }
-
-    return;
 }
 
 
-void inicializarMatriz(matriz& C, int n, int m){
+void inicializarMatrizConCeros(matriz& C, int n, int m){
     // inicializa con ceros
     C.resize(n);
     for(int i = 0; i < n; i++){
         C[i].resize(m);
-        for(int j = 0; j < n; j++){
+        for(int j = 0; j < m; j++){
             C[i][j] = 0.0;
         }
     }
-
-    return;
 }
 
 
-void generarBMatrizCMM(unordered_map<int, Equipo>& equipos, matriz& b){
-    // Las inicializa en el orden que carga los equipos (pueden venir en cualquier orden estos)
-    int idx;
-    inicializarMatriz(b, equipos.size(), 1);
+void generarMatrizbCMM(unordered_map<int, Equipo>& equipos, matriz& b){
+    inicializarMatrizConCeros(b, equipos.size(), 1);
 
-    // Matriz b
     for(auto it = equipos.begin(); it != equipos.end(); ++it){
         b[it->second.index][0] = 1 + ((it->second.ganados - it->second.perdidos)/2);
     }
+}
 
+void generarMatrizACMM(vector<Partido>& partidos, unordered_map<int, Equipo>& equipos, matriz& A){
+    inicializarMatrizConCeros(A, equipos.size(), equipos.size());
+    int eq_idx1;
+    int eq_idx2;
+
+    // Agrega los valores entre los equipos (no la diagonal)
+    for(auto it_part = partidos.begin(); it_part != partidos.end(); ++it_part){
+        auto it_eq = equipos.find(it_part->equipo1);
+        eq_idx1 = it_eq->second.index;
+        it_eq = equipos.find(it_part->equipo2);
+        eq_idx2 = it_eq->second.index;
+
+        A[eq_idx1][eq_idx2]--;
+        A[eq_idx2][eq_idx1]--;
+    }
+
+    // Agrego la diagonal
+    for(auto it_eq = equipos.begin(); it_eq != equipos.end(); ++it_eq){
+        A[it_eq->second.index][it_eq->second.index] = 2 + it_eq->second.jugados;
+    }
 }

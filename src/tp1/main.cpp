@@ -37,11 +37,13 @@ int main(int argv, char* argc[]){
 
     if(metodo == 0){
         // Colley con eliminacion gausseana
-        // generarAMatrizCMM(partidos, equipos, A)
-        generarBMatrizCMM(equipos, b);
+        generarMatrizACMM(partidos, equipos, A);
+        show_matrix("A", A);
+        generarMatrizbCMM(equipos, b);
         show_matrix("b", b);
+
+        // Gaussear aquí (n.n)
     }
 
     return 0;
 }
-
