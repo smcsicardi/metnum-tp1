@@ -34,3 +34,19 @@ void show_map_equipos(const unordered_map<int, Equipo>& equipos){
 
     cout << endl;
 }
+
+matriz rand_matrix(int n, int m) {
+    /* Generates a nxm matrix full of random doubles between -5 and 5.
+     */
+     srand(time(NULL));
+
+     matriz out (n, vector<double> (m));
+
+     for (auto& i : out) {
+         for (auto& j : i) {
+             j = ((rand() % 100) / 10.0) - 5;
+         }
+     }
+
+     return out;
+}
