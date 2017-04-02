@@ -20,10 +20,8 @@ int main(int argv, char* argc[]){
     }
 
     vector<Partido> partidos;
-    Equipos equipos_dat;
-    vector<Equipo> equipos = equipos_dat.data;
+    unordered_map<int, Equipo> equipos;
     partidos.resize(cantPartidos);
-    equipos.resize(cantEquipos);
 
     levantarDatos(cantPartidos, partidos, equipos);
 

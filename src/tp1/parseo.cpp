@@ -1,12 +1,12 @@
 #include "Includes.h"
 
 void cargarAEquipos(vector<Equipo>& equipos, int eq1, int eq2, int g1, int g2);
-void levantarDatos(int cantPartidos, vector<Partido>& partidos, vector<Equipo>& equipos);
+void levantarDatos(int cantPartidos, vector<Partido>& partidos, unordered_map<int, Equipo>& equipos);
 void inicializarMatriz(matriz& C, int n);
 matriz generarMatrizColley(vector<Partido>& partidos, vector<Equipo>& equipos, matriz& A, matriz& b);
 
 
-void levantarDatos(int cantPartidos, vector<Partido>& partidos, vector<Equipo>& equipos){
+void levantarDatos(int cantPartidos, vector<Partido>& partidos, unordered_map<int, Equipo>& equipos){
     // OJO, no estoy agregando fecha.
     int param;
     for(int i = 0; i < cantPartidos; i++){
@@ -32,7 +32,7 @@ void cargarAEquipos(vector<Equipo>& equipos, int eq1, int eq2, int g1, int g2){
     vector<Equipo>::iterator it = equipos.begin();
 
     // Equipo 1
-    while(it != equipos.end() && (*it).numero != eq1){
+    while(it != equipos.end() && (*it).id != eq1){
         ++it;
     }
 
@@ -45,7 +45,7 @@ void cargarAEquipos(vector<Equipo>& equipos, int eq1, int eq2, int g1, int g2){
     } else {
         // El equipo no está, lo agrego.
         Equipo eq;
-        eq.numero = eq1;
+        eq.id = eq1;
         eq.cantJugados = 1.0;
         eq.cantGanados = g1 > g2 ? 1.0 : 0.0;
         eq.cantPerdidos = g1 < g2 ? 1.0 : 0.0;

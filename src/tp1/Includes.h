@@ -34,23 +34,19 @@ struct Partido{
 struct Equipo{
 
     Equipo(){
-        this->numero = 0;
+        this->id = 0;
         this->cantJugados = 0;
         this->cantGanados = 0;
         this->cantPerdidos = 0;
         this->cantEmpatados = 0;
     }
 
-    int numero;
+    int id;
+    int index;
     double cantJugados;
     double cantGanados;
     double cantPerdidos;
     double cantEmpatados;
-};
-
-struct Equipos{
-    unordered_map<int, int> index;
-    vector<Equipo> data;
 };
 
 #endif
