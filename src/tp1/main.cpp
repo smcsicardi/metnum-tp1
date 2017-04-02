@@ -1,6 +1,6 @@
 #include "Includes.h"
-#include "eg.cpp"
-#include "parseo.cpp"
+#include "eg.h"
+#include "parseo.h"
 
 
 int main(int argv, char* argc[]){
