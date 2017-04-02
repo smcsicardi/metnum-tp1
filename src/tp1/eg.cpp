@@ -1,36 +1,27 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <cstdlib>
-#include <ctime>
+#include "Includes.h"
 
 
-using namespace std;
+void gaussian_elim(matriz &A, matriz &b){
 
-#define vec vector<double>
+    for (int k = 0; k != A.size()-1; k++) {
 
-int n = 5;
-
-vector<vec> gaussian_elim(vector<vec> &A, vec &b){
-
-    for (int k = 0; k != n-1; k++) {
-
-        for (int i = k+1; i != n; i++) {
+        for (int i = k+1; i != A.size(); i++) {
 
            double m = A[i][k]/A[k][k];
 
-           for (int j = k; j != n; j++) {
+           for (int j = k; j != A.size(); j++) {
                A[i][j] = A[i][j] - m*A[k][j];
            }
 
-           b[i] = b[i] - m*b[k];
+           b[i][0] = b[i][0] - m*b[k];
         }
     }
 
     return A;
 }
 
-void show_matrix(string name, vector<vec> &A) {
+
+void show_matrix(string name, matriz &A) {
     cout << name;
     cout << endl;
     for (auto i : A) {
@@ -41,38 +32,41 @@ void show_matrix(string name, vector<vec> &A) {
     }
 }
 
-int main(){
 
-    srand(time(0));
+// int main(){
 
-    vector<vec> A (n, vector<double>(n, 0));
-    vec b (n, 0);
+//     srand(time(0));
 
-    // Initializing
-    for (auto& i : b) {
-        i = rand() % 20;
-    }
 
-    for (auto& i : A) {
-        for (auto& j : i) {
-            j = rand() % 20;
-        }
-    }
+//     int n = 5;
+//     matriz A (n, vector<double>(n, 0));
+//     vec b (n, 0);
 
-    // Intro
-    cout << "b:";
-    cout << endl;
-    for (auto i : b) {
-        cout << i << " ";
-    }
-    cout << endl;
+//     // Initializing
+//     for (auto& i : b) {
+//         i = rand() % 20;
+//     }
 
-    show_matrix("A:", A);
+//     for (auto& i : A) {
+//         for (auto& j : i) {
+//             j = rand() % 20;
+//         }
+//     }
 
-    // E.G.
-    vector<vec> res = gaussian_elim(A, b);
+//     // Intro
+//     cout << "b:";
+//     cout << endl;
+//     for (auto i : b) {
+//         cout << i << " ";
+//     }
+//     cout << endl;
 
-    show_matrix("D:", A);
+//     show_matrix("A:", A);
 
-    return 0;
-}
+//     // E.G.
+//     vector<vec> res = gaussian_elim(A, b);
+
+//     show_matrix("D:", A);
+
+//     return 0;
+// }
