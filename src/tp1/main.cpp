@@ -31,7 +31,7 @@ int main(int argv, char* argc[]){
 
     if(metodo == 0){
         // Colley con eliminacion gausseana
-        generarMatrizColley(partidos, equipos, A, b);
+        // generarMatrizColley(partidos, equipos, A, b);
     }
 
     return 0;

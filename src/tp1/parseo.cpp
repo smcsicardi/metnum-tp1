@@ -60,8 +60,9 @@ void inicializarMatriz(matriz& C, int n){
     // inicializa con ceros
     C.resize(n);
     for(int i = 0; i < n; i++){
+        C[i].resize(n);
         for(int j = 0; j < n; j++){
-            C[i][j].push_back(0.0);
+            C[i][j] = 0.0;
         }
     }
 }
@@ -72,4 +73,6 @@ matriz generarMatrizColley(vector<Partido>& partidos, vector<Equipo>& equipos, m
     inicializarMatriz(b, equipos.size());
 
     // Matriz A
+
+
 }

@@ -48,8 +48,4 @@ struct Equipo{
     double cantEmpatados;
 };
 
-void cargarAEquipos(vector<Equipo>& equipos, int eq1, int eq2, int g1, int g2);
-void levantarDatos(int cantPartidos, vector<Partido>& partidos, vector<Equipo>& equipos);
-
-
 #endif

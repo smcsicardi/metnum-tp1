@@ -13,11 +13,9 @@ void gaussian_elim(matriz &A, matriz &b){
                A[i][j] = A[i][j] - m*A[k][j];
            }
 
-           b[i][0] = b[i][0] - m*b[k];
+           b[i][0] = b[i][0] - m*b[k][0];
         }
     }
-
-    return A;
 }
 
 
