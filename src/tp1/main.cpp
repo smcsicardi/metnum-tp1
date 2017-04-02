@@ -18,9 +18,10 @@ int main(int argv, char* argc[]){
     if(cantEquipos <= 0 || cantPartidos <= 0){
         return 0;
     }
-    
+
     vector<Partido> partidos;
-    vector<Equipo> equipos;
+    Equipos equipos_dat;
+    vector<Equipo> equipos = equipos_dat.data;
     partidos.resize(cantPartidos);
     equipos.resize(cantEquipos);
 

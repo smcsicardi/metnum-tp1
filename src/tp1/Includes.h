@@ -4,13 +4,13 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <unordered_map>
 #include <cstdlib>
 #include <stdio.h>
 #include <ctime>
 
 using namespace std;
 
-#define vec vector<double>
 #define matriz vector< vector<double> >
 
 
@@ -46,6 +46,11 @@ struct Equipo{
     double cantGanados;
     double cantPerdidos;
     double cantEmpatados;
+};
+
+struct Equipos{
+    unordered_map<int, int> index;
+    vector<Equipo> data;
 };
 
 #endif
