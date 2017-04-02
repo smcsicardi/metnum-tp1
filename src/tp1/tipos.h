@@ -1,5 +1,5 @@
-#ifndef INCLUDES_H
-#define INCLUDES_H
+#ifndef TIPOS_H
+#define TIPOS_H
 
 #include <iostream>
 #include <vector>
@@ -35,6 +35,7 @@ struct Equipo{
 
     Equipo(){
         this->id = 0;
+        this->index = 0;
         this->cantJugados = 0;
         this->cantGanados = 0;
         this->cantPerdidos = 0;

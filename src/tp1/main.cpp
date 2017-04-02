@@ -1,4 +1,4 @@
-#include "Includes.h"
+#include "tipos.h"
 #include "eg.h"
 #include "parseo.h"
 

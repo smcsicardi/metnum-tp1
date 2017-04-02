@@ -1,4 +1,4 @@
-#include "Includes.h"
+#include "tipos.h"
 
 
 void gaussian_elim(matriz &A, matriz &b){
