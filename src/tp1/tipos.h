@@ -36,18 +36,18 @@ struct Equipo{
     Equipo(){
         this->id = 0;
         this->index = 0;
-        this->cantJugados = 0;
-        this->cantGanados = 0;
-        this->cantPerdidos = 0;
-        this->cantEmpatados = 0;
+        this->jugados = 0;
+        this->ganados = 0;
+        this->perdidos = 0;
+        this->empatados = 0;
     }
 
     int id;
     int index;
-    double cantJugados;
-    double cantGanados;
-    double cantPerdidos;
-    double cantEmpatados;
+    double jugados;
+    double ganados;
+    double perdidos;
+    double empatados;
 };
 
 #endif

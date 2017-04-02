@@ -19,18 +19,6 @@ void gaussian_elim(matriz &A, matriz &b){
 }
 
 
-void show_matrix(string name, matriz &A) {
-    cout << name;
-    cout << endl;
-    for (auto i : A) {
-        for (auto j : i) {
-            cout << j << " ";
-        }
-        cout << endl;
-    }
-}
-
-
 // int main(){
 
 //     srand(time(0));

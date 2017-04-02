@@ -6,6 +6,7 @@ void levantarDatos(int cantPartidos, vector<Partido>& partidos, unordered_map<in
     int idxeq = 0;
     for(int i = 0; i < cantPartidos; i++){
         Partido p;
+        cin >> p.fecha;
         cin >> p.equipo1;
         cin >> p.goles1;
         cin >> p.equipo2;
@@ -28,10 +29,10 @@ void cargarAEquipos(unordered_map<int, Equipo>& equipos, int eq1, int eq2, int g
     auto it = equipos.find(eq1);
     if(it != equipos.end()){
         // El equipo está agregado, le cargo los datos
-        (*it).second.cantJugados++;
-        (*it).second.cantGanados = g1 > g2 ? (*it).second.cantGanados+1 : (*it).second.cantGanados;
-        (*it).second.cantPerdidos = g1 < g2 ? (*it).second.cantPerdidos+1 : (*it).second.cantPerdidos;
-        (*it).second.cantEmpatados = g1 == g2 ? (*it).second.cantEmpatados+1 : (*it).second.cantEmpatados;
+        (*it).second.jugados++;
+        (*it).second.ganados = g1 > g2 ? (*it).second.ganados+1 : (*it).second.ganados;
+        (*it).second.perdidos = g1 < g2 ? (*it).second.perdidos+1 : (*it).second.perdidos;
+        (*it).second.empatados = g1 == g2 ? (*it).second.empatados+1 : (*it).second.empatados;
 
     } else {
         // El equipo no está, lo agrego.
@@ -39,47 +40,23 @@ void cargarAEquipos(unordered_map<int, Equipo>& equipos, int eq1, int eq2, int g
         eq.id = eq1;
         eq.index = idxeq;
         idxeq++;
-        eq.cantJugados = 1.0;
-        eq.cantGanados = g1 > g2 ? 1.0 : 0.0;
-        eq.cantPerdidos = g1 < g2 ? 1.0 : 0.0;
-        eq.cantEmpatados = g1 == g2 ? 1.0 : 0.0;
+        eq.jugados = 1.0;
+        eq.ganados = g1 > g2 ? 1.0 : 0.0;
+        eq.perdidos = g1 < g2 ? 1.0 : 0.0;
+        eq.empatados = g1 == g2 ? 1.0 : 0.0;
 
         equipos.insert({eq1, eq});
     }
-
-
-    // vector<Equipo>::iterator it = equipos.begin();
-
-    // while(it != equipos.end() && (*it).id != eq1){
-    //     ++it;
-    // }
-
-    // if(it != equipos.end()){
-    //     // El equipo está agregado, le cargo los datos
-    //     (*it).cantJugados++;
-    //     (*it).cantGanados = g1 > g2 ? (*it).cantGanados+1 : (*it).cantGanados;
-    //     (*it).cantPerdidos = g1 < g2 ? (*it).cantPerdidos+1 : (*it).cantPerdidos;
-    //     (*it).cantEmpatados = g1 == g2 ? (*it).cantEmpatados+1 : (*it).cantEmpatados;
-    // } else {
-    //     // El equipo no está, lo agrego.
-    //     Equipo eq;
-    //     eq.id = eq1;
-    //     eq.cantJugados = 1.0;
-    //     eq.cantGanados = g1 > g2 ? 1.0 : 0.0;
-    //     eq.cantPerdidos = g1 < g2 ? 1.0 : 0.0;
-    //     eq.cantEmpatados = g1 == g2 ? 1.0 : 0.0;
-    //     equipos.push_back(eq);
-    // }
 
     return;
 }
 
 
-void inicializarMatriz(matriz& C, int n){
+void inicializarMatriz(matriz& C, int n, int m){
     // inicializa con ceros
     C.resize(n);
     for(int i = 0; i < n; i++){
-        C[i].resize(n);
+        C[i].resize(m);
         for(int j = 0; j < n; j++){
             C[i][j] = 0.0;
         }
@@ -89,12 +66,14 @@ void inicializarMatriz(matriz& C, int n){
 }
 
 
-matriz generarMatrizColley(vector<Partido>& partidos, vector<Equipo>& equipos, matriz& A, matriz& b){
+void generarBMatrizCMM(unordered_map<int, Equipo>& equipos, matriz& b){
     // Las inicializa en el orden que carga los equipos (pueden venir en cualquier orden estos)
-    inicializarMatriz(A, equipos.size());
-    inicializarMatriz(b, equipos.size());
+    int idx;
+    inicializarMatriz(b, equipos.size(), 1);
 
-    // Matriz A
-
+    // Matriz b
+    for(auto it = equipos.begin(); it != equipos.end(); ++it){
+        b[it->second.index][0] = 1 + ((it->second.ganados - it->second.perdidos)/2);
+    }
 
 }

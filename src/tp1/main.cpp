@@ -1,6 +1,7 @@
 #include "tipos.h"
 #include "eg.h"
 #include "parseo.h"
+#include "utilities.h"
 
 
 int main(int argv, char* argc[]){
@@ -21,16 +22,24 @@ int main(int argv, char* argc[]){
 
     vector<Partido> partidos;
     unordered_map<int, Equipo> equipos;
-    partidos.resize(cantPartidos);
 
     levantarDatos(cantPartidos, partidos, equipos);
 
+
+    // Imprimo el vector partidos
+    show_vector_partidos(partidos);
+    show_map_equipos(equipos);
+
+
+    // Ax = b
     matriz A;
     matriz b;
 
     if(metodo == 0){
         // Colley con eliminacion gausseana
-        // generarMatrizColley(partidos, equipos, A, b);
+        // generarAMatrizCMM(partidos, equipos, A)
+        generarBMatrizCMM(equipos, b);
+        show_matrix("b", b);
     }
 
     return 0;
