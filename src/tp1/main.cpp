@@ -34,6 +34,7 @@ int main(int argv, char* argc[]){
     // Ax = b
     matriz A;
     matriz b;
+    matriz wp;
 
     if(metodo == 0){
         // Colley con eliminacion gausseana
@@ -43,6 +44,9 @@ int main(int argv, char* argc[]){
         show_matrix("b", b);
 
         // Gaussear aquí (n.n)
+    } else if (metodo == 2) {
+        generarVectorWP(equipos, wp);
+        show_matrix("WP", wp);
     }
 
     return 0;

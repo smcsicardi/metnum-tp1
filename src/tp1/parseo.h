@@ -13,4 +13,6 @@ void generarMatrizbCMM(unordered_map<int, Equipo>& equipos, matriz& b);
 
 void generarMatrizACMM(vector<Partido>& partidos, unordered_map<int, Equipo>& equipos, matriz& A);
 
+void generarVectorWP(unordered_map<int, Equipo>& equipos, matriz& wp);
+
 #endif
