@@ -42,7 +42,6 @@ matriz backwards_substitution(matriz &A, matriz &b){
             sum += A[i][j] * x[j][0];
         }
 
-        cout << x[i][0] << " "<< A[i][i] << " " << b[i][0] << endl;
         x[i][0] = (b[i][0] - sum) / A[i][i];
     }
 
