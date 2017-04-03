@@ -51,5 +51,7 @@ matriz rand_matrix(int n, int m) {
          }
      }
 
-     return out;
+void fail(string msg){
+    cout << msg;
+    exit(1);
 }

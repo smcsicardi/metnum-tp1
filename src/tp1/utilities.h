@@ -11,4 +11,6 @@ void show_map_equipos(const unordered_map<int, Equipo>& equipos);
 
 matriz rand_matrix(int n, int m);
 
+void fail(string msg);
+
 #endif

@@ -3,6 +3,10 @@
 
 #include "tipos.h"
 
-void gaussian_elim(matriz &A, matriz &b);
+void upper_triangulate(matriz &A, matriz &b);
+
+matriz backwards_substitution(matriz &A, matriz &b);
+
+matriz gaussian_elim(matriz &A, matriz &b);
 
 #endif
