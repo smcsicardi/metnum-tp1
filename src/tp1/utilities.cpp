@@ -16,8 +16,11 @@ void show_matrix(string name, const matriz &A) {
 void show_vector_partidos(const vector<Partido>& partidos){
     for(auto it = partidos.begin(); it != partidos.end(); ++it){
         cout << "Fecha: " << it->fecha << endl;
-        cout << "Equipo1 id: " << it->equipo1 << "  - Goles Eq1: " << it->goles1 << 
-                "  |  Equipo2 id: " << it->equipo2 << "  - Goles Eq2: " << it->goles2 << endl; 
+        cout << "Equipo1 id: " << it->equipo1
+             << "  - Goles Eq1: " << it->goles1
+             << "  |  Equipo2 id: " << it->equipo2
+             << "  - Goles Eq2: " << it->goles2
+             << endl;
     }
     cout << endl;
 }
