@@ -1,6 +1,7 @@
 #include "eg.h"
 #include "utilities.h"
 #include "tipos.h"
+#include "parseo.h"
 
 void upper_triangulate(matriz &A, matriz &b){
     /* Convierte una matriz cuadrada y vector asociado
@@ -46,6 +47,23 @@ matriz backwards_substitution(matriz &A, matriz &b){
     }
 
     return x;
+}
+
+matriz forward_substitution(const matriz &A, const matriz &b){
+    unsigned int n = A.size();
+    double sum = 0;
+    matriz y (n, vector<double> (1));
+
+    for (unsigned int i = 0; i < n; i++){
+        sum = 0;
+        for(unsigned int j = 0; j < i; j++){
+            sum += A[i][j] * y[j][0];
+        }
+
+        y[i][0] = (b[i][0] - sum)/ A[i][i];
+    }
+
+    return y;
 }
 
 matriz gaussian_elim(matriz &A, matriz &b){

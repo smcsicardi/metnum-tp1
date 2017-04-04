@@ -48,28 +48,29 @@ void cargarAEquipos(unordered_map<int, Equipo>& equipos, int eq1, int eq2, int g
 }
 
 
-void inicializarMatrizConCeros(matriz& C, int n, int m){
+void inicializarMatrizConVal(matriz& C, int n, int m, double val){
     // inicializa con ceros
     C.resize(n);
     for(int i = 0; i < n; i++){
         C[i].resize(m);
         for(int j = 0; j < m; j++){
-            C[i][j] = 0.0;
+            C[i][j] = val;
         }
     }
 }
 
 
 void generarMatrizbCMM(unordered_map<int, Equipo>& equipos, matriz& b){
-    inicializarMatrizConCeros(b, equipos.size(), 1);
+    inicializarMatrizConVal(b, equipos.size(), 1, 0);
 
     for(auto it = equipos.begin(); it != equipos.end(); ++it){
         b[it->second.index][0] = 1 + ((it->second.ganados - it->second.perdidos)/2);
     }
 }
 
+
 void generarMatrizACMM(vector<Partido>& partidos, unordered_map<int, Equipo>& equipos, matriz& A){
-    inicializarMatrizConCeros(A, equipos.size(), equipos.size());
+    inicializarMatrizConVal(A, equipos.size(), equipos.size(), 0);
     int eq_idx1;
     int eq_idx2;
 

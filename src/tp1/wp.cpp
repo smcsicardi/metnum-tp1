@@ -4,7 +4,7 @@
 void generarVectorWP(unordered_map<int, Equipo>& equipos, matriz& wp){
     double valorWp;
     int i = 0;
-    inicializarMatrizConCeros(wp,equipos.size(), 1);
+    inicializarMatrizConVal(wp,equipos.size(), 1, 0);
     for ( auto it = equipos.begin(); it != equipos.end(); ++it ){
         Equipo eq = it->second;
         if (eq.jugados != 0){

@@ -40,30 +40,33 @@ int main(int argv, char* argc[]){
     // A = (L') * (L)^t
     matriz L1; //ti
     matriz L2; //ts
+    matriz y;
 
-    if(metodo == CMM_EG){
-        // Colley con eliminacion gausseana
+    if(metodo == CMM_EG || metodo == CMM_CL){
+        // Genero la matriz de Colley
         generarMatrizACMM(partidos, equipos, A);
         show_matrix("A", A);
         generarMatrizbCMM(equipos, b);
         show_matrix("b", b);
 
-        x = gaussian_elim(A,b);
-        show_matrix("x", x);
+        if(metodo == CMM_EG){
+            // ELIMINACION GAUSSEANA
+            x = gaussian_elim(A,b);
+            show_matrix("x", x);
+        } else {
+            // FACTORIZACION DE CHOLESKY
+            factorizacionDeCholesky(A, L1, L2);
+            show_matrix("L1", L1);
+            show_matrix("L2", L2);
 
-    } else if (metodo == CMM_CL){
-        // Colley con factorizacion de Cholesky
-        generarMatrizACMM(partidos, equipos, A);
-        show_matrix("A", A);
-        generarMatrizbCMM(equipos, b);
-        show_matrix("b", b);
+            // Resuelvo L1 * y = b
+            y = forward_substitution(L1, b);
+            show_matrix("y", y);
+            // Resuelvo L2 * x = y
+            x = backwards_substitution(L2, y);
+            show_matrix("x", x);
+        }
 
-        factorizacionDeCholesky(A, L1, L2);
-        show_matrix("L1", L1);
-        show_matrix("L2", L2);
-
-        return 0;
-    
     } else if (metodo == WP) {
         generarVectorWP(equipos, A);
         show_matrix("WP", A);
