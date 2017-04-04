@@ -5,7 +5,7 @@ void show_matrix(string name, const matriz &A) {
     cout << "Matriz: " << name << endl;
     for (auto i : A) {
         for (auto j : i) {
-            cout << j << " ";
+            cout << setfill(' ') << setw(11) << j;
         }
         cout << endl;
     }

@@ -8,6 +8,8 @@
 #include <cstdlib>
 #include <stdio.h>
 #include <ctime>
+#include <math.h>
+#include <iomanip> // Libreria para el padding
 
 using namespace std;
 
