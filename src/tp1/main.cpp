@@ -2,6 +2,8 @@
 #include "eg.h"
 #include "parseo.h"
 #include "utilities.h"
+#include "wp.h"
+
 
 
 int main(int argv, char* argc[]){
@@ -27,26 +29,31 @@ int main(int argv, char* argc[]){
 
 
     // Imprimo el vector partidos
-    show_vector_partidos(partidos);
-    show_map_equipos(equipos);
+    // show_vector_partidos(partidos);
+    // show_map_equipos(equipos);
 
 
     // Ax = b
     matriz A;
     matriz b;
-    matriz wp;
+    matriz x;
 
-    if(metodo == 0){
+    if(metodo == CMM_EG){
         // Colley con eliminacion gausseana
         generarMatrizACMM(partidos, equipos, A);
         show_matrix("A", A);
         generarMatrizbCMM(equipos, b);
         show_matrix("b", b);
 
-        // Gaussear aquí (n.n)
-    } else if (metodo == 2) {
-        generarVectorWP(equipos, wp);
-        show_matrix("WP", wp);
+        x = gaussian_elim(A,b);
+        show_matrix("x", x);
+
+    } else if (metodo == CMM_CL){
+        return 0;
+    
+    } else if (metodo == WP) {
+        generarVectorWP(equipos, A);
+        show_matrix("WP", A);
     }
 
     return 0;

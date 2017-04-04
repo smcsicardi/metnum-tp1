@@ -54,7 +54,7 @@ matriz gaussian_elim(matriz &A, matriz &b){
      */
 
     upper_triangulate(A, b);
-    show_matrix("A", A);
-    show_matrix("b", b);
+    show_matrix("A triangulada", A);
+    show_matrix("b triangulada", b);
     return backwards_substitution(A, b);
 }

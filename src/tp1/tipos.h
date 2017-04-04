@@ -12,6 +12,9 @@
 using namespace std;
 
 #define matriz vector< vector<double> >
+#define CMM_EG  0
+#define CMM_CL  1
+#define WP      2
 
 
 struct Partido{
