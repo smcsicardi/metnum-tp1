@@ -19,7 +19,7 @@ int main(int argv, char* argc[]){
     cin >> cantPartidos;
 
     if(cantEquipos <= 0 || cantPartidos <= 0){
-        return 0;
+        return 1;
     }
 
     vector<Partido> partidos;
@@ -52,7 +52,6 @@ int main(int argv, char* argc[]){
         if(metodo == CMM_EG){
             // ELIMINACION GAUSSEANA
             x = gaussian_elim(A,b);
-            show_matrix("x", x);
         } else {
             // FACTORIZACION DE CHOLESKY
             factorizacionDeCholesky(A, L1, L2);
@@ -64,13 +63,12 @@ int main(int argv, char* argc[]){
             show_matrix("y", y);
             // Resuelvo L2 * x = y
             x = backwards_substitution(L2, y);
-            show_matrix("x", x);
         }
 
     } else if (metodo == WP) {
-        generarVectorWP(equipos, A);
-        show_matrix("WP", A);
+        generarVectorWP(equipos, x);
     }
+    show_result(x);
 
     return 0;
 }
