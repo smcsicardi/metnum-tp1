@@ -6,6 +6,11 @@ EXECUTABLE=tp
 
 all: $(SOURCES) $(EXECUTABLE)
 
+test:
+	$(CC) $(CFLAGS) tp1/tests/tests.cpp -o test
+
+rebuild: clean all
+
 $(EXECUTABLE): $(OBJECTS)
 	$(CC) $(OBJECTS) -o $@
 
