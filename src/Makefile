@@ -1,5 +1,5 @@
 CC=g++
-CFLAGS=-Wall -Wpedantic -O2 -std=c++11 -c
+CFLAGS=-Wall -Wpedantic -O2 -std=c++11
 SOURCES=$(wildcard tp1/*.cpp)
 OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=tp
@@ -15,7 +15,7 @@ $(EXECUTABLE): $(OBJECTS)
 	$(CC) $(OBJECTS) -o $@
 
 %.o: %.cpp
-	$(CC) $(CFLAGS) $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm tp1/*.o
