@@ -1,4 +1,4 @@
-CC=g++-6
+CC=g++
 CFLAGS=-Wall -Wpedantic -O2 -std=c++11
 SOURCES=$(wildcard tp1/lib/*.cpp)
 OBJECTS=$(SOURCES:.cpp=.o)
