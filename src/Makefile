@@ -19,4 +19,6 @@ $(EXECUTABLE): $(OBJECTS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm tp1/*.o
+	rm tp1/lib/*.o
+	rm tp
+	rm test
