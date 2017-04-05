@@ -1,18 +1,19 @@
 CC=g++
 CFLAGS=-Wall -Wpedantic -O2 -std=c++11
-SOURCES=$(wildcard tp1/*.cpp)
+SOURCES=$(wildcard tp1/lib/*.cpp)
 OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=tp
+TEST=test
 
-all: $(SOURCES) $(EXECUTABLE)
+all: $(SOURCES) $(EXECUTABLE) $(TEST)
 
-test:
-	$(CC) $(CFLAGS) tp1/tests/tests.cpp -o test
+$(TEST):
+	$(CC) $(OBJECTS) tp1/tests.cpp -o $@
 
 rebuild: clean all
 
 $(EXECUTABLE): $(OBJECTS)
-	$(CC) $(OBJECTS) -o $@
+	$(CC) $(OBJECTS) tp1/main.cpp -o $@
 
 %.o: %.cpp
 	$(CC) $(CFLAGS) -c $< -o $@

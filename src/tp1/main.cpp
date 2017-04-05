@@ -1,9 +1,9 @@
-#include "tipos.h"
-#include "parseo.h"
-#include "utilities.h"
-#include "eg.h"
-#include "cl.h"
-#include "wp.h"
+#include "lib/tipos.h"
+#include "lib/parseo.h"
+#include "lib/utilities.h"
+#include "lib/eg.h"
+#include "lib/cl.h"
+#include "lib/wp.h"
 
 
 int main(int argv, char* argc[]){
