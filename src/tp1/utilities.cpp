@@ -42,7 +42,7 @@ void show_map_equipos(const unordered_map<int, Equipo>& equipos){
         cerr << "Key: " << it->first << endl;
         cerr << "Value: { " << endl;
         cerr << "Id: " << it->second.id << " | " << "Index: " << it->second.index << endl;
-        cerr << "Jugados: " << it->second.jugados << " | Ganados: " << it->second. ganados << " | Perdidos: " << 
+        cerr << "Jugados: " << it->second.jugados << " | Ganados: " << it->second. ganados << " | Perdidos: " <<
         it->second.perdidos << " | Empatados: " << it->second.empatados << endl << "}" << endl;
     }
 
