@@ -31,14 +31,13 @@ int main(int argv, char* argc[]){
     matriz L1; //ti
     matriz L2; //ts
     matriz y;
+
     auto inicio = TIEMPO();
     for (int i = 0; i < REPETICIONES; ++i)
     {
-	    generarMatrizACMM(partidos, equipos, A);
-	    show_matrix("A", A);
-	    generarMatrizbCMM(equipos, b);
-	    show_matrix("b", b);
-	    x = gaussian_elim(A,b);
+        generarMatrizACMM(partidos, equipos, A);
+        generarMatrizbCMM(equipos, b);
+        x = gaussian_elim(A, b);
     }
 
     auto fin = TIEMPO();
