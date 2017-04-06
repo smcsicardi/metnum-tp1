@@ -67,7 +67,7 @@ int main(int argv, char* argc[]){
 
     } else if (metodo == WP) {
         generarVectorWP(equipos, x);
-    
+
     } else if (metodo == SCORE) {
         generarVectorScore(equipos, x);
     }
