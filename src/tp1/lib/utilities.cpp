@@ -13,14 +13,11 @@ void show_matrix(string name, const matriz &A) {
     cerr << endl;
 }
 
-void show_result(const matriz &A) {
-    for (auto i : A) {
-        for (auto j : i) {
-            cout << setfill(' ') << setw(11) << j;
-        }
-        cout << endl;
+void show_result(const map<int, Equipo>& equipos, const matriz &x) {
+    // Imprimo en el orden de los id de los equipos.
+    for(auto it = equipos.begin(); it != equipos.end(); ++it){
+        cout << setfill(' ') << setw(11) << x[it->second.index][0] << endl;
     }
-    cout << endl;
 }
 
 
@@ -37,7 +34,7 @@ void show_vector_partidos(const vector<Partido>& partidos){
 }
 
 
-void show_map_equipos(const unordered_map<int, Equipo>& equipos){
+void show_map_equipos(const map<int, Equipo>& equipos){
     for(auto it = equipos.begin(); it != equipos.end(); ++it){
         cerr << "Key: " << it->first << endl;
         cerr << "Value: { " << endl;
@@ -68,4 +65,16 @@ matriz rand_matrix(int n, int m) {
 void fail(string msg){
     cerr << msg;
     exit(1);
+}
+
+
+void inicializarMatrizConVal(matriz& C, int n, int m, double val){
+    // inicializa con ceros
+    C.resize(n);
+    for(int i = 0; i < n; i++){
+        C[i].resize(m);
+        for(int j = 0; j < m; j++){
+            C[i][j] = val;
+        }
+    }
 }

@@ -2,15 +2,14 @@
 #define PARSEO_H
 
 #include "tipos.h"
+#include "utilities.h"
 
-void cargarAEquipos(unordered_map<int, Equipo>& equipos, int eq1, int eq2, int g1, int g2, int& idxeq);
+void cargarAEquipos(map<int, Equipo>& equipos, int eq1, int eq2, int g1, int g2, int& idxeq);
 
-void levantarDatos(int cantPartidos, vector<Partido>& partidos, unordered_map<int, Equipo>& equipos);
+void levantarDatos(int cantPartidos, vector<Partido>& partidos, map<int, Equipo>& equipos);
 
-void inicializarMatrizConVal(matriz& C, int n, int m, double val);
+void generarMatrizbCMM(map<int, Equipo>& equipos, matriz& b);
 
-void generarMatrizbCMM(unordered_map<int, Equipo>& equipos, matriz& b);
-
-void generarMatrizACMM(vector<Partido>& partidos, unordered_map<int, Equipo>& equipos, matriz& A);
+void generarMatrizACMM(vector<Partido>& partidos, map<int, Equipo>& equipos, matriz& A);
 
 #endif

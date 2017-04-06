@@ -4,12 +4,13 @@
 #include "lib/eg.h"
 #include "lib/cl.h"
 #include "lib/wp.h"
+#include "lib/score.h"
 
 
 int main(int argv, char* argc[]){
     int metodo = atoi(argc[1]);
 
-    if(metodo < 0 || metodo > 2){
+    if(metodo < 0 || metodo > 3){
         return 0;
     }
 
@@ -23,15 +24,14 @@ int main(int argv, char* argc[]){
     }
 
     vector<Partido> partidos;
-    unordered_map<int, Equipo> equipos;
+    map<int, Equipo> equipos;
 
     levantarDatos(cantPartidos, partidos, equipos);
 
 
     // Imprimo el vector partidos
     // show_vector_partidos(partidos);
-    // show_map_equipos(equipos);
-
+    show_map_equipos(equipos);
 
     // Ax = b
     matriz A;
@@ -67,8 +67,12 @@ int main(int argv, char* argc[]){
 
     } else if (metodo == WP) {
         generarVectorWP(equipos, x);
+    
+    } else if (metodo == SCORE) {
+        generarVectorScore(equipos, x);
     }
-    show_result(x);
+
+    show_result(equipos, x);
 
     return 0;
 }

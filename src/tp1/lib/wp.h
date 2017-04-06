@@ -2,9 +2,9 @@
 #define WP_H
 
 #include "tipos.h"
-#include "parseo.h"
+#include "utilities.h"
 
-void generarVectorWP(unordered_map<int, Equipo>& equipos, matriz& wp);
+void generarVectorWP(map<int, Equipo>& equipos, matriz& wp);
 
 
 #endif

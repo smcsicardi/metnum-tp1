@@ -2,7 +2,7 @@
 #include "parseo.h"
 
 
-void levantarDatos(int cantPartidos, vector<Partido>& partidos, unordered_map<int, Equipo>& equipos){
+void levantarDatos(int cantPartidos, vector<Partido>& partidos, map<int, Equipo>& equipos){
     int idxeq = 0;
     for(int i = 0; i < cantPartidos; i++){
         Partido p;
@@ -21,7 +21,7 @@ void levantarDatos(int cantPartidos, vector<Partido>& partidos, unordered_map<in
 }
 
 
-void cargarAEquipos(unordered_map<int, Equipo>& equipos, int eq1, int eq2, int g1, int g2, int& idxeq){
+void cargarAEquipos(map<int, Equipo>& equipos, int eq1, int eq2, int g1, int g2, int& idxeq){
     // Reviso si estan los equipos, si estan los modifico, sino los agrego.
     
     auto it = equipos.find(eq1);
@@ -48,19 +48,7 @@ void cargarAEquipos(unordered_map<int, Equipo>& equipos, int eq1, int eq2, int g
 }
 
 
-void inicializarMatrizConVal(matriz& C, int n, int m, double val){
-    // inicializa con ceros
-    C.resize(n);
-    for(int i = 0; i < n; i++){
-        C[i].resize(m);
-        for(int j = 0; j < m; j++){
-            C[i][j] = val;
-        }
-    }
-}
-
-
-void generarMatrizbCMM(unordered_map<int, Equipo>& equipos, matriz& b){
+void generarMatrizbCMM(map<int, Equipo>& equipos, matriz& b){
     inicializarMatrizConVal(b, equipos.size(), 1, 0);
 
     for(auto it = equipos.begin(); it != equipos.end(); ++it){
@@ -69,7 +57,7 @@ void generarMatrizbCMM(unordered_map<int, Equipo>& equipos, matriz& b){
 }
 
 
-void generarMatrizACMM(vector<Partido>& partidos, unordered_map<int, Equipo>& equipos, matriz& A){
+void generarMatrizACMM(vector<Partido>& partidos, map<int, Equipo>& equipos, matriz& A){
     inicializarMatrizConVal(A, equipos.size(), equipos.size(), 0);
     int eq_idx1;
     int eq_idx2;

@@ -17,7 +17,7 @@ int main(int argv, char* argc[]){
     cin >> cantPartidos;
 
     vector<Partido> partidos;
-    unordered_map<int, Equipo> equipos;
+    map<int, Equipo> equipos;
 
     levantarDatos(cantPartidos, partidos, equipos);
 

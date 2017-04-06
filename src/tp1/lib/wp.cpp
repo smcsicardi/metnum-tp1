@@ -1,7 +1,7 @@
 #include "wp.h"
 
 
-void generarVectorWP(unordered_map<int, Equipo>& equipos, matriz& wp){
+void generarVectorWP(map<int, Equipo>& equipos, matriz& wp){
     double valorWp;
     int i = 0;
     inicializarMatrizConVal(wp,equipos.size(), 1, 0);

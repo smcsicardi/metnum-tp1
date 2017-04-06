@@ -4,7 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-#include <unordered_map>
+#include <map>
 #include <cstdlib>
 #include <stdio.h>
 #include <ctime>
@@ -17,6 +17,7 @@ using namespace std;
 #define CMM_EG  0
 #define CMM_CL  1
 #define WP      2
+#define SCORE   3
 
 
 struct Partido{
