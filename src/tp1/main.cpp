@@ -31,7 +31,7 @@ int main(int argv, char* argc[]){
 
     // Imprimo el vector partidos
     // show_vector_partidos(partidos);
-    show_map_equipos(equipos);
+    // show_map_equipos(equipos);
 
     // Ax = b
     matriz A;
