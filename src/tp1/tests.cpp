@@ -7,7 +7,6 @@
 #include "lib/wp.h"
 
 #define TIEMPO chrono::high_resolution_clock::now
-#define MEDICIONES 1000
 #define REPETICIONES 1000
 
 int main(int argv, char* argc[]){
@@ -32,18 +31,38 @@ int main(int argv, char* argc[]){
     matriz L2; //ts
     matriz y;
 
-    auto inicio = TIEMPO();
+    generarMatrizACMM(partidos, equipos, A);
+    generarMatrizbCMM(equipos, b);
+
+    /*** Gaussian Elim ***/
+    vector<double> resultados_eg (REPETICIONES);
     for (int i = 0; i < REPETICIONES; ++i)
     {
-        generarMatrizACMM(partidos, equipos, A);
-        generarMatrizbCMM(equipos, b);
+        auto inicio = TIEMPO();
         x = gaussian_elim(A, b);
+        auto fin = TIEMPO();
+        double t = (double) chrono::duration_cast<chrono::microseconds>(fin - inicio).count();
+        resultados_eg[i] = t;
     }
 
-    auto fin = TIEMPO();
-    double t = (double) chrono::duration_cast<std::chrono::nanoseconds>(fin-inicio).count();
+    /*** Cholesky ***/
+    vector<double> resultados_ch (REPETICIONES);
+    for (int i = 0; i < REPETICIONES; ++i)
+    {
+        auto inicio = TIEMPO();
+        factorizacionDeCholesky(A, L1, L2);
+        y = forward_substitution(L1, b);
+        x = backwards_substitution(L2, y);
+        auto fin = TIEMPO();
+        double t = (double) chrono::duration_cast<chrono::microseconds>(fin - inicio).count();
+        resultados_ch[i] = t;
+    }
 
-    cout << t/REPETICIONES << endl;
+    cout << "eg,ch" << endl;
+    cout << fixed << setprecision(0);
+    for (int i = 0; i < REPETICIONES; ++i){
+        cout << resultados_eg[i] << "," << resultados_ch[i] << endl;
+    }
 
     return 0;
 }
