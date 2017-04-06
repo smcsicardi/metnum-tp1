@@ -5,20 +5,20 @@ OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=tp
 TEST=test
 
-all: tp1/main.o tp1/tests.o $(SOURCES) $(EXECUTABLE) $(TEST)
+all: $(SOURCES) $(EXECUTABLE) $(TEST)
 
 rebuild: clean all
 
-$(TEST): $(OBJECTS)
+$(TEST): tp1/tests.cpp $(OBJECTS)
 	$(CC) $(CFLAGS) $(OBJECTS) tp1/tests.cpp -o $@
 
-$(EXECUTABLE): $(OBJECTS)
+$(EXECUTABLE): tp1/main.cpp $(OBJECTS)
 	$(CC) $(CFLAGS) $(OBJECTS) tp1/main.cpp -o $@
 
 %.o: %.cpp
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm tp1/lib/*.o
-	rm tp
-	rm test
+	rm $(OBJECTS)
+	rm $(EXECUTABLE)
+	rm $(TEST)
