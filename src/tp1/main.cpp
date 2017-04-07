@@ -20,6 +20,7 @@ int main(int argv, char* argc[]){
     cin >> cantPartidos;
 
     if(cantEquipos <= 0 || cantPartidos <= 0){
+        cout << endl << "No pueden ser negativos la cantidad de equipos ni la cantidad de partidos." << endl;
         return 1;
     }
 
@@ -27,6 +28,11 @@ int main(int argv, char* argc[]){
     map<int, Equipo> equipos;
 
     levantarDatos(cantPartidos, partidos, equipos);
+
+    if(equipos.size() != cantEquipos){
+        cout << endl << "La cantidad de equipos que juegan partidos es distinta al numero que se paso de cantidad de los mismos." << endl;
+        return 1;
+    }
 
 
     // Imprimo el vector partidos
