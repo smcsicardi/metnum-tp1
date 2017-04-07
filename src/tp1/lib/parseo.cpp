@@ -23,7 +23,7 @@ void levantarDatos(int cantPartidos, vector<Partido>& partidos, map<int, Equipo>
 
 void cargarAEquipos(map<int, Equipo>& equipos, int eq1, int eq2, int g1, int g2, int& idxeq){
     // Reviso si estan los equipos, si estan los modifico, sino los agrego.
-    
+
     auto it = equipos.find(eq1);
     if(it != equipos.end()){
         // El equipo está agregado, le cargo los datos
