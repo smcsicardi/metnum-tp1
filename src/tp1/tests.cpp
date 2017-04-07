@@ -1,4 +1,5 @@
 #include <chrono>
+#include <thread>
 #include "lib/tipos.h"
 #include "lib/parseo.h"
 #include "lib/utilities.h"
@@ -7,7 +8,7 @@
 #include "lib/wp.h"
 
 #define TIEMPO chrono::high_resolution_clock::now
-#define REPETICIONES 1000
+#define REPETICIONES 100
 
 int main(int argv, char* argc[]){
 
@@ -43,6 +44,7 @@ int main(int argv, char* argc[]){
         auto fin = TIEMPO();
         double t = (double) chrono::duration_cast<chrono::microseconds>(fin - inicio).count();
         resultados_eg[i] = t;
+        this_thread::sleep_for(chrono::milliseconds(2));
     }
 
     /*** Cholesky ***/
@@ -56,6 +58,7 @@ int main(int argv, char* argc[]){
         auto fin = TIEMPO();
         double t = (double) chrono::duration_cast<chrono::microseconds>(fin - inicio).count();
         resultados_ch[i] = t;
+        this_thread::sleep_for(chrono::milliseconds(2));
     }
 
     cout << "eg,ch" << endl;
