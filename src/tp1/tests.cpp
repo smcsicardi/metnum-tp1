@@ -8,7 +8,7 @@
 #include "lib/wp.h"
 
 #define TIEMPO chrono::high_resolution_clock::now
-#define REPETICIONES 100
+#define REPETICIONES 200
 
 int main(int argv, char* argc[]){
 
