@@ -39,3 +39,23 @@ void factorizacionDeCholesky(const matriz& A, matriz& L1, matriz& L2){
     L1[n-1][n-1] = sqrt(A[n-1][n-1] - sum);
     L2[n-1][n-1] = L1[n-1][n-1];
 }
+
+void factChol(const matriz& A, matriz& L)
+  int n = A.size();
+  for (int j = 0; j< n - 1; ++j){
+      double sum = 0;
+      for (int k = 0 k < j-1; ++k){
+          sum += L[j,k]*L[j,k];
+      }
+      L[j,j] = sqrt(A[j,j] - sum);
+
+      double l = 1/L[j,j];
+      for (int i = j+1; i<n-1; ++i){
+          sum = 0;
+          for (int k = 0 k < j-1; ++k){
+            sum = L[i,j]*L[j,k];
+          }
+          L[i,j] = (A[i,j] - sum)*l;
+      }
+  }
+}
