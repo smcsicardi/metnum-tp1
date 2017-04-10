@@ -41,7 +41,7 @@ int main(int argv, char* argc[]){
         auto inicio = TIEMPO();
         x = gaussian_elim(A, b);
         auto fin = TIEMPO();
-        double t = (double) chrono::duration_cast<chrono::microseconds>(fin - inicio).count();
+        double t = (double) chrono::duration_cast<chrono::nanoseconds>(fin - inicio).count();
         resultados_eg[i] = t;
         this_thread::sleep_for(chrono::milliseconds(2));
     }
@@ -55,7 +55,7 @@ int main(int argv, char* argc[]){
         y = forward_substitution(L1, b);
         x = backwards_substitution(L2, y);
         auto fin = TIEMPO();
-        double t = (double) chrono::duration_cast<chrono::microseconds>(fin - inicio).count();
+        double t = (double) chrono::duration_cast<chrono::nanoseconds>(fin - inicio).count();
         resultados_ch[i] = t;
         this_thread::sleep_for(chrono::milliseconds(2));
     }
