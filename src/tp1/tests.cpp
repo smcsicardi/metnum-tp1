@@ -8,10 +8,9 @@
 #include "lib/wp.h"
 
 #define TIEMPO chrono::high_resolution_clock::now
-#define REPETICIONES 200
 
 int main(int argv, char* argc[]){
-
+    int reps = atoi(argc[1]);
     int cantEquipos;
     int cantPartidos;
     cin >> cantEquipos;
@@ -36,8 +35,8 @@ int main(int argv, char* argc[]){
     generarMatrizbCMM(equipos, b);
 
     /*** Gaussian Elim ***/
-    vector<double> resultados_eg (REPETICIONES);
-    for (int i = 0; i < REPETICIONES; ++i)
+    vector<double> resultados_eg (reps);
+    for (int i = 0; i < reps; ++i)
     {
         auto inicio = TIEMPO();
         x = gaussian_elim(A, b);
@@ -48,8 +47,8 @@ int main(int argv, char* argc[]){
     }
 
     /*** Cholesky ***/
-    vector<double> resultados_ch (REPETICIONES);
-    for (int i = 0; i < REPETICIONES; ++i)
+    vector<double> resultados_ch (reps);
+    for (int i = 0; i < reps; ++i)
     {
         auto inicio = TIEMPO();
         factorizacionDeCholesky(A, L1, L2);
@@ -63,7 +62,7 @@ int main(int argv, char* argc[]){
 
     cout << "eg,ch" << endl;
     cout << fixed << setprecision(0);
-    for (int i = 0; i < REPETICIONES; ++i){
+    for (int i = 0; i < reps; ++i){
         cout << resultados_eg[i] << "," << resultados_ch[i] << endl;
     }
 
