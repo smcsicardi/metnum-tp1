@@ -3,7 +3,7 @@
 #include "tipos.h"
 #include "parseo.h"
 
-void upper_triangulate(matriz &A, matriz &b){
+void upper_triangulate(matriz& A, matriz& b){
     /* Convierte una matriz cuadrada y vector asociado
      * en triangular superior `in place`.
      */
@@ -28,7 +28,7 @@ void upper_triangulate(matriz &A, matriz &b){
     }
 }
 
-matriz backwards_substitution(matriz &A, matriz &b){
+matriz backwards_substitution(const matriz& A, const matriz& b){
     /* Hace sustitución hacia atras sobre una matriz
      * triangular superior y genera un vector
      * de resultados.
@@ -49,13 +49,12 @@ matriz backwards_substitution(matriz &A, matriz &b){
     return x;
 }
 
-matriz forward_substitution(const matriz &A, const matriz &b){
+matriz forward_substitution(const matriz& A, const matriz& b){
     unsigned int n = A.size();
-    double sum = 0;
     matriz y (n, vector<double> (1));
 
     for (unsigned int i = 0; i < n; i++){
-        sum = 0;
+        double sum = 0;
         for(unsigned int j = 0; j < i; j++){
             sum += A[i][j] * y[j][0];
         }

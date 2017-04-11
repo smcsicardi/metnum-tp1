@@ -16,7 +16,7 @@ void show_matrix(string name, const matriz &A) {
 void show_result(const map<int, Equipo>& equipos, const matriz &x) {
     // Imprimo en el orden de los id de los equipos.
     for(auto it = equipos.begin(); it != equipos.end(); ++it){
-        cout << setfill(' ') << setw(11) << x[it->second.index][0] << endl;
+        cout << x[it->second.index][0] << endl;
     }
 }
 

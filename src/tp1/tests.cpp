@@ -21,15 +21,12 @@ int main(int argv, char* argc[]){
 
     levantarDatos(cantPartidos, partidos, equipos);
 
-
-    // Ax = b
-    matriz A;
-    matriz b;
+    matriz A (cantEquipos, vector<double> (cantEquipos));
+    matriz b (cantEquipos, vector<double> (1));
     matriz x;
-    // A = (L') * (L)^t
-    matriz L1; //ti
-    matriz L2; //ts
-    matriz y;
+    matriz L1 (cantEquipos, vector<double> (cantEquipos));
+    matriz L2 (cantEquipos, vector<double> (cantEquipos));
+    matriz y (cantEquipos, vector<double> (1));
 
     generarMatrizACMM(partidos, equipos, A);
     generarMatrizbCMM(equipos, b);
@@ -38,8 +35,9 @@ int main(int argv, char* argc[]){
     vector<double> resultados_eg (reps);
     for (int i = 0; i < reps; ++i)
     {
+        matriz A_ = A;
         auto inicio = TIEMPO();
-        x = gaussian_elim(A, b);
+        x = gaussian_elim(A_, b);
         auto fin = TIEMPO();
         double t = (double) chrono::duration_cast<chrono::nanoseconds>(fin - inicio).count();
         resultados_eg[i] = t;

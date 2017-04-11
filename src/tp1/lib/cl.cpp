@@ -3,8 +3,6 @@
 void factorizacionDeCholesky(const matriz& A, matriz& L1, matriz& L2){
     int n = A.size();
     double sum = 0;
-    inicializarMatrizConVal(L1, n, n, 0);
-    inicializarMatrizConVal(L2, n, n, 0);
 
     L1[0][0] = sqrt(A[0][0]);
     L2[0][0] = L1[0][0];

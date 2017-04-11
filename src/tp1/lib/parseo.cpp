@@ -56,9 +56,12 @@ void generarMatrizbCMM(map<int, Equipo>& equipos, matriz& b){
 }
 
 
-void generarMatrizACMM(vector<Partido>& partidos, map<int, Equipo>& equipos, matriz& A){
+void generarMatrizACMM(vector<Partido>& partidos,
+                       map<int, Equipo>& equipos,
+                       matriz& A){
     int eq_idx1;
     int eq_idx2;
+    int n = A.size();
 
     // Agrega los valores entre los equipos (no la diagonal)
     for(auto it_part = partidos.begin(); it_part != partidos.end(); ++it_part){
@@ -71,8 +74,12 @@ void generarMatrizACMM(vector<Partido>& partidos, map<int, Equipo>& equipos, mat
         A[eq_idx2][eq_idx1]--;
     }
 
-    // Agrego la diagonal
+    // Seteo la diagonal en 2 por si tengo equipos "de menos"
+    for (int i = 0; i < n; ++i){
+        A[i][i] = 2;
+    }
+    // Y le sumo los jugados
     for(auto it_eq = equipos.begin(); it_eq != equipos.end(); ++it_eq){
-        A[it_eq->second.index][it_eq->second.index] = 2 + it_eq->second.jugados;
+        A[it_eq->second.index][it_eq->second.index] += it_eq->second.jugados;
     }
 }
