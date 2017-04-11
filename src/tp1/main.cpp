@@ -40,8 +40,8 @@ int main(int argv, char* argc[]){
     // show_map_equipos(equipos);
 
     // Ax = b
-    matriz A;
-    matriz b;
+    matriz A (cantEquipos, vector<double> (cantEquipos, 0));
+    matriz b (cantEquipos, vector<double> (1, 0));
     matriz x;
     // A = (L') * (L)^t
     matriz L1; //ti

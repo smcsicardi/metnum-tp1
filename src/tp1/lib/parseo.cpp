@@ -49,7 +49,6 @@ void cargarAEquipos(map<int, Equipo>& equipos, int eq1, int eq2, int g1, int g2,
 
 
 void generarMatrizbCMM(map<int, Equipo>& equipos, matriz& b){
-    inicializarMatrizConVal(b, equipos.size(), 1, 0);
 
     for(auto it = equipos.begin(); it != equipos.end(); ++it){
         b[it->second.index][0] = 1 + ((it->second.ganados - it->second.perdidos)/2);
@@ -58,7 +57,6 @@ void generarMatrizbCMM(map<int, Equipo>& equipos, matriz& b){
 
 
 void generarMatrizACMM(vector<Partido>& partidos, map<int, Equipo>& equipos, matriz& A){
-    inicializarMatrizConVal(A, equipos.size(), equipos.size(), 0);
     int eq_idx1;
     int eq_idx2;
 
