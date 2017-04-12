@@ -4,6 +4,6 @@
 #include "tipos.h"
 #include "utilities.h"
 
-void generarVectorScore(const map<int, Equipo>& equipos, matriz& scores);
+matriz generarVectorScore(const map<int, Equipo>& equipos);
 
 #endif

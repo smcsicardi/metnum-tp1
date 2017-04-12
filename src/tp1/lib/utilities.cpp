@@ -66,15 +66,3 @@ void fail(string msg){
     cerr << msg;
     exit(1);
 }
-
-
-void inicializarMatrizConVal(matriz& C, int n, int m, double val){
-    // inicializa con ceros
-    C.resize(n);
-    for(int i = 0; i < n; i++){
-        C[i].resize(m);
-        for(int j = 0; j < m; j++){
-            C[i][j] = val;
-        }
-    }
-}

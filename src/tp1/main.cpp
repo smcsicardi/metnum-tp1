@@ -64,10 +64,10 @@ int main(int argv, char* argc[]){
         }
 
     } else if (metodo == WP) {
-        generarVectorWP(equipos, x);
+        x = generarVectorWP(equipos);
 
     } else if (metodo == SCORE) {
-        generarVectorScore(equipos, x);
+        x = generarVectorScore(equipos);
     }
 
     show_result(equipos, x);
