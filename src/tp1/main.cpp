@@ -39,9 +39,9 @@ int main(int argv, char* argc[]){
     if(metodo == CMM_EG || metodo == CMM_CL){
         // Genero la matriz de Colley
         generarMatrizACMM(partidos, equipos, A);
-        show_matrix("A", A);
+        //show_matrix("A", A);
         generarMatrizbCMM(equipos, b);
-        show_matrix("b", b);
+        //show_matrix("b", b);
 
         if(metodo == CMM_EG){
             // ELIMINACION GAUSSEANA
