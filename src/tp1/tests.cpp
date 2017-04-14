@@ -31,31 +31,28 @@ int main(int argv, char* argc[]){
     generarMatrizACMM(partidos, equipos, A);
     generarMatrizbCMM(equipos, b);
 
-    /*** Gaussian Elim ***/
     vector<double> resultados_eg (reps);
+    vector<double> resultados_ch (reps);
     for (int i = 0; i < reps; ++i)
     {
+        /*** Gaussian Elim ***/
         matriz A_ = A;
         auto inicio = TIEMPO();
         x = gaussian_elim(A_, b);
         auto fin = TIEMPO();
         double t = (double) chrono::duration_cast<chrono::nanoseconds>(fin - inicio).count();
         resultados_eg[i] = t;
-        this_thread::sleep_for(chrono::milliseconds(2));
-    }
 
-    /*** Cholesky ***/
-    vector<double> resultados_ch (reps);
-    for (int i = 0; i < reps; ++i)
-    {
-        auto inicio = TIEMPO();
+        /*** Cholesky ***/
+        inicio = TIEMPO();
         factorizacionDeCholesky(A, L1, L2);
         y = forward_substitution(L1, b);
         x = backwards_substitution(L2, y);
-        auto fin = TIEMPO();
-        double t = (double) chrono::duration_cast<chrono::nanoseconds>(fin - inicio).count();
+        fin = TIEMPO();
+        t = (double) chrono::duration_cast<chrono::nanoseconds>(fin - inicio).count();
         resultados_ch[i] = t;
-        this_thread::sleep_for(chrono::milliseconds(2));
+
+        this_thread::sleep_for(chrono::milliseconds(5));
     }
 
     cout << "eg,ch" << endl;
