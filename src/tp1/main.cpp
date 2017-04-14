@@ -19,7 +19,7 @@ int main(int argv, char* argc[]){
     cin >> cantEquipos;
     cin >> cantPartidos;
 
-    if(cantEquipos <= 0 || cantPartidos <= 0){
+    if(cantEquipos < 0 || cantPartidos < 0){
         cout << endl << "No pueden ser negativos la cantidad de equipos ni la cantidad de partidos." << endl;
         return 1;
     }
